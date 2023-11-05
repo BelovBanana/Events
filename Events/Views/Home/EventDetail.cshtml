@@ -1,0 +1,18 @@
+﻿@model Events.Models.Domain.Event
+@{
+}
+<div class="movie-detail w-80 m-auto">
+    <div class="img-container">
+        <img alt="image" src="/Uploads/@Model.ImageFile">
+    </div>
+    <div class="detail-container">
+        <h3>@Model.Title</h3>
+        <h4>@Model.GenreNames</h4>
+        <h4>@Model.StartDate</h4>
+        <h4>Ведущий: @Model.Leader</h4>
+        <h4>Организатор: @Model.Organizer</h4>
+    </div>
+</div>
+<div class="w-80 m-auto">
+    <a href="/Home/Index" class="btn btn-default">Назад</a>
+</div>

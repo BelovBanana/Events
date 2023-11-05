@@ -1,0 +1,44 @@
+﻿@model Events.Models.DTO.EventListVm
+@{
+    Layout = "_Layout";
+}
+
+<section class="search-bar">
+    <form method="get" asp-action="Index">
+        <input type="text" name="term" placeholder="поиск тут">
+        <button type="submit"><i class="fa fa-search"></i></button>
+        <a class="btn btn-default" href="/Home/Index">All</a>
+    </form>
+</section>
+<section class="movies">
+    @foreach(var events in Model.EventList)
+    {
+    <div class="movie-card" onclick="window.location.href='/Home/EventDetail?eventsId=@events.Id'">
+        <div class="movie-image">
+            <img src="/Uploads/@events.EventImage">
+        </div>
+        <div class="movie-info">
+            <h4>@events.Title</h4>
+            <h4>@events.GenreNames</h4>
+            <h4>@events.StartDate</h4>
+            <h4>Ведущий: @events.Leader </h4>
+            <h4>Организатор: @events.Organizer</h4>
+        </div>
+    </div>
+    }
+</section>
+
+<div class="pagination">
+    @for(int i=1;i<=Model.TotalPages;i++)
+    {
+        @if (i == Model.CurrentPage)
+        {
+            <a href="/Home/Index?currentPage=@i"&term="@Model.Term" class="active">@i</a>
+        }
+        else
+        {
+            <a href="/Home/Index?currentPage=@i"&term="@Model.Term">@i</a>
+        }
+    }
+   
+</div>

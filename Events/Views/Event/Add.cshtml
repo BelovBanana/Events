@@ -1,0 +1,69 @@
+﻿@model Events.Models.Domain.Event
+@{
+}
+
+<form class="w-40" asp-action="Add" method="post" enctype="multipart/form-data">
+    <h2 class="pb-10">Добавить мероприятие</h2>
+
+    <div class="input-container">
+        <label asp-for="Title" class="w-40">Добавить мероприятие</label>
+        <input type="text" class="input" asp-for="Title">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="Title"></span>
+    </div>
+
+    <div class="input-container">
+        <label asp-for="ImageFile" class="w-40">Изображение</label>
+        <input type="file" class="input" asp-for="ImageFile">
+    </div>  
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="ImageFile"></span>
+    </div>
+
+    <div class="input-container">
+        <label asp-for="Genres" class="w-40">Жанр</label>
+        <select asp-items="Model.GenreList" class="input" asp-for="Genres" multiple>
+            <option value="">--select--</option>
+        </select>
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="Genres"></span>
+    </div>
+
+    <div class="input-container">
+        <label asp-for="StartDate" class="w-40">Начало мероприятия</label>
+        <input type="text" class="input" asp-for="StartDate">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="StartDate"></span>
+    </div>
+
+    <div class="input-container">
+        <label asp-for="Leader" class="w-40">Руководитель</label>
+        <input type="text" class="input" asp-for="Leader">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="Leader"></span>
+    </div>
+
+    <div class="input-container">
+        <label asp-for="Organizer" class="w-40">Организатор</label>
+        <input type="text" class="input" asp-for="Organizer">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="Organizer"></span>
+    </div>
+
+    @if (TempData["msg"] != null)
+    {
+        <div class="alert mb-1">
+            @TempData["msg"]
+        </div>
+    }
+
+    <div class="input-container">
+        <button class="btn btn-default" type="submit">Сохранить</button>
+        <a class="btn btn-sec" href="/Event/EventList">Все записи</a>
+    </div>
+</form>
